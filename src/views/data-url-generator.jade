@@ -1,0 +1,6 @@
+script(id="data-url-generator", type="text/x-template")
+  div(class="data-url-generator")
+    div(@change="change", @dragover="dragover", @drop="drop")
+      p Drop file here or
+        input(type="file")
+    textarea(placeholder="data:...") {{ dataURL }}

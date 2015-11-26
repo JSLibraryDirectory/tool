@@ -1,0 +1,7 @@
+script(id="unicode-generator", type="text/x-template")
+  div(class="unicode-generator")
+    label(class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect", for="separator", v-el:checkbox)
+      input(type="checkbox", id="separator", class="mdl-checkbox__input", v-model="hasSeparator")
+      span(class="mdl-checkbox__label") Separates each unicode with a comma.
+    textarea(placeholder="Content...", v-model="content")
+    textarea(placeholder="Unicode...") {{ unicode }}

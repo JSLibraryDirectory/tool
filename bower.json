@@ -1,0 +1,31 @@
+{
+  "name": "tool",
+  "version": "1.0.0",
+  "description": "A series of simple tools.",
+  "license": "MIT",
+  "homepage": "https://github.com/fengyuanchen/tool",
+  "authors": [
+    "Fengyuan Chen"
+  ],
+  "keywords": [
+    "tool",
+    "html",
+    "css",
+    "javascript",
+    "front-end",
+    "web",
+    "development"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "tests",
+    "test"
+  ],
+  "devDependencies": {
+    "vue": "^1.0.8",
+    "material-design-lite": "~1.0.6",
+    "material-design-icons": "~2.1.1"
+  }
+}
