@@ -9,7 +9,6 @@ var scripts = {
       dest: 'js'
     };
 var styles = {
-      scss: 'src/styles/*.scss',
       src: 'src/styles/*.scss',
       dest: 'css'
     };
@@ -25,11 +24,18 @@ gulp.task('webpack', function(callback) {
     output: {
       filename: scripts.main
     },
+    externals: {
+      'vue': 'window.Vue'
+    },
     module: {
       loaders: [
         {
-          test: /\.html/,
-          loader: 'html-loader'
+          test: /\.js$/,
+          exclude: /(node_modules|bower_components)/,
+          loader: 'babel', // 'babel-loader' is also a legal name to reference
+          query: {
+            presets: ['react', 'es2015']
+          }
         }
       ]
     }
@@ -38,7 +44,7 @@ gulp.task('webpack', function(callback) {
       throw new plugins.util.PluginError('webpack', err);
     }
 
-    plugins.util.log("[webpack]", stats.toString());
+    plugins.util.log('[webpack]', stats.toString());
 
     callback();
   });
@@ -81,22 +87,14 @@ gulp.task('css', function() {
 gulp.task('jade', function() {
   return gulp.src(html.src)
     .pipe(plugins.jade({
-      pretty: true,
-      self: {
-        production: false
-      }
+      pretty: true
     }))
     .pipe(gulp.dest('./'));
 });
 
 gulp.task('html', function() {
   return gulp.src(html.src)
-    .pipe(plugins.jade({
-      pretty: false,
-      self: {
-        production: true
-      }
-    }))
+    .pipe(plugins.jade())
     .pipe(gulp.dest('./'));
 });
 
@@ -128,7 +126,7 @@ gulp.task('asset', ['asset@js', 'asset@css', 'asset@fonts']);
 
 gulp.task('watch', function () {
   gulp.watch(scripts.src, ['webpack']);
-  gulp.watch(styles.scss, ['sass']);
+  gulp.watch(styles.src, ['sass']);
   gulp.watch(html.jade, ['jade']);
 });
 
