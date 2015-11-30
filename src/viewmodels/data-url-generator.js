@@ -1,17 +1,19 @@
-module.exports = {
+import data from '../models/data-url-generator.js';
+
+export default {
   data: function () {
-    return require('../models/data-url-generator.js');
+    return data;
   },
   template: '#data-url-generator',
   methods: {
     read: function (file, callback) {
-      var reader;
+      let reader;
 
       if (file) {
         reader = new FileReader();
 
-        reader.onload = function () {
-          callback(this.result);
+        reader.onload = e => {
+          callback(e.target.result);
         };
 
         reader.readAsDataURL(file);
@@ -20,12 +22,11 @@ module.exports = {
       }
     },
     change: function (e) {
-      var _this = this;
-      var target = e.target;
-      var files = target.files;
+      const target = e.target;
+      const files = target.files;
 
-      this.read(files && files[0], function (dataURL) {
-        _this.dataURL = dataURL;
+      this.read(files && files[0], dataURL => {
+        this.dataURL = dataURL;
         target.value = '';
       });
     },
@@ -33,13 +34,12 @@ module.exports = {
       e.preventDefault();
     },
     drop: function (e) {
-      var _this = this;
-      var files = e.dataTransfer.files;
+      const files = e.dataTransfer.files;
 
       e.preventDefault();
 
-      this.read(files && files[0], function (dataURL) {
-        _this.dataURL = dataURL;
+      this.read(files && files[0], dataURL => {
+        this.dataURL = dataURL;
       });
     }
   }

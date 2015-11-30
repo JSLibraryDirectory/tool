@@ -1,6 +1,8 @@
-module.exports = {
+import data from '../models/html-special-chars.js';
+
+export default {
   data: function () {
-    return require('../models/html-special-chars.js');
+    return data;
   },
   computed: {
     result: function () {
@@ -10,16 +12,8 @@ module.exports = {
   template: '#html-special-chars',
   methods: {
     espace: function (source) {
-      var chars = {
-            '&': '&amp;',
-            '\'': '&#039;',
-            '"': '&quot;',
-            '<': '&lt;',
-            '>': '&gt;',
-          };
-
-      return source.replace(/[&'"<>]/g, function (char) {
-        return chars[char];
+      return source.replace(this.regexp, char => {
+        return this.chars[char];
       });
     }
   }

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   currentView: '',
   tools: {
     'home': 'Home',

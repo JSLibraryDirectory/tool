@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   tools: [
     {
       name: 'Data URL Generator',

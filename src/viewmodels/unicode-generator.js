@@ -1,6 +1,8 @@
-module.exports = {
+import data from '../models/unicode-generator.js';
+
+export default {
   data: function () {
-    return require('../models/unicode-generator.js');
+    return data;
   },
   computed: {
     unicode: function () {
@@ -8,47 +10,27 @@ module.exports = {
     }
   },
   template: '#unicode-generator',
-  ready: function () {
-    this.upgrade(this.$els.checkbox);
-  },
-  beforeDestroy: function () {
-    this.downgrade(this.$els.checkbox);
-  },
   methods: {
     parse: function (content) {
-      var length = content.length;
-      var unicode = [];
-      var i = 0;
+      const length = content.length;
+      let unicode = [];
+      let i = 0;
 
       while (i < length) {
         unicode.push(this.format(content.charCodeAt(i++).toString(16)));
       }
 
-      return unicode.join(this.hasSeparator ? ',' : '');
+      return unicode.join('');
     },
     format: function (hex) {
-      var prefix = {
-            0: '0x',
-            1: '0x0',
-            2: '0x00',
-            3: '0x000'
-          };
+      const prefixes = {
+        0: '\\u',
+        1: '\\u0',
+        2: '\\u00',
+        3: '\\u000'
+      };
 
-      return prefix[4 - hex.length] + hex;
-    },
-    upgrade: function (target) {
-      var componentHandler = window.componentHandler;
-
-      if (componentHandler) {
-        componentHandler.upgradeElements(target);
-      }
-    },
-    downgrade: function (target) {
-      var componentHandler = window.componentHandler;
-
-      if (componentHandler) {
-        componentHandler.downgradeElements(target);
-      }
+      return prefixes[Math.max(0, 4 - hex.length)] + hex.toUpperCase();
     }
   }
 };

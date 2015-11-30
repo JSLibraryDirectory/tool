@@ -1,6 +1,8 @@
-module.exports = {
+import data from '../models/menu.js';
+
+export default {
   data: function () {
-    return require('../models/menu.js');
+    return data;
   },
   template: '#menu',
 };

@@ -1,7 +1,7 @@
-module.exports = {
+export default {
   title: 'Tools',
   subtitle: 'Tools',
-  loading: true,
+  progress: true,
   year: new Date().getFullYear(),
   links: [
     {

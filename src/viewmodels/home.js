@@ -1,6 +1,8 @@
-module.exports = {
+import data from '../models/home.js';
+
+export default {
   data: function () {
-    return require('../models/home.js');
+    return data;
   },
-  template: '#home',
+  template: '#home'
 };

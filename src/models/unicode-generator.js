@@ -1,4 +1,3 @@
-module.exports = {
-  content: '',
-  hasSeparator: true
+export default {
+  content: ''
 };
