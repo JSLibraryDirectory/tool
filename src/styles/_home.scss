@@ -2,19 +2,20 @@
 // --------------------------------------------------
 
 .tools {
-  margin: 0;
-  padding: 0;
+  margin: -16px;
 
-  > li {
-    float: left;
-    list-style: none;
-    margin: 0 24px 24px 0;
-  }
+  .mdl-card {
+    width: auto;
 
-  .mdl-card__title {
-    background-image: repeating-linear-gradient(-45deg, transparent, transparent 4px, rgba(255,255,255,0.2) 5px, transparent 6px, transparent 9px);
-    // background-image: linear-gradient(to bottom, transparent, transparent 33%, rgba(255,255,255,0.2) 66%, transparent);
-    background-color: rgb(63,81,181);
-    color: #fff;
+    .mdl-card__title {
+      background-image: repeating-linear-gradient(-45deg, transparent, transparent 4px, rgba(255,255,255,.1) 5px, transparent 6px, transparent 10px);
+      background-color: rgb(63,81,181);
+      color: #fff;
+    }
+
+    .mdl-card__supporting-text {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
 }

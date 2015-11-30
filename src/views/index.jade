@@ -3,14 +3,14 @@ html(lang="en")
   head
     include ./head.jade
   body
-    div(class="mdl-progress mdl-js-progress mdl-progress__indeterminate page-progress", v-show="loading")
+    div(class="mdl-progress mdl-js-progress mdl-progress__indeterminate page-progress", v-show="progress")
     div(class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header")
       include ./header.jade
       include ./drawer.jade
       main(class="mdl-layout__content")
         div(class="page-content")
           template(is="tool")
-      //- include ./footer.jade
+        //- include ./footer.jade
     include ./menu.jade
     include ./tool.jade
     include ./home.jade

@@ -2,13 +2,9 @@
 // --------------------------------------------------
 
 .unicode-generator {
-  > label {
-    margin-bottom: 16px;
-  }
-
   > textarea {
     width: 100%;
-    min-height: 220px;
+    min-height: 240px;
     margin-bottom: 16px;
     padding: 16px;
     border-color: rgb(224,224,224);
