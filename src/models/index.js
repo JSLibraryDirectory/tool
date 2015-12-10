@@ -5,7 +5,7 @@ export default {
   year: new Date().getFullYear(),
   links: [
     {
-      name: 'Github',
+      name: 'GitHub',
       url: 'https://github.com/fengyuanchen/tool'
     },
     {
